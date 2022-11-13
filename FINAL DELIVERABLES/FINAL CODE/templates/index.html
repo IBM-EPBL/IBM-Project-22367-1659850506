@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+Sample Clothing Store - Home
+{% endblock %}
+
+{% block body %}
+<!-- Main Store Body -->
+    {% if session['user'] %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            <strong>Welcome, {{ session['user'] }}</strong> Hope you have a pleasant experience shopping with us.
+        </div>
+
+    {% endif %}
+      <div class="row" id="shirtCard">
+      {% for i in range(shirtsLen) %}
+          <div class="col-sm">
+              <div class="card text-center">
+                  <div class="card-body">
+                    <form action="/buy/" methods="POST">
+                        <h5 class="card-title">{{shirts[i]["typeClothes"].capitalize()}}</h5>
+                      <img src="/static/img/{{shirts[i]["image"]}}" class="shirt" alt="" />
+                      <h5 class="card-text">{{shirts[i]["samplename"]}}</h5>
+                      {% if shirts[i]["onSale"] %}
+                        <img src="/static/img/sale-icon.png" width="26px" />
+                        <h4 class="card-text price" style="color:red; display:inline">{{ '{:,.2f}'.format(shirts[i]["onSalePrice"]) }}</h4>
+                      {% else %}
+                        <h4 class="card-text price">{{ '{:,.2f}'.format(shirts[i]["price"]) }}</h4>
+                      {% endif %}
+                      <div class="stepper-input">
+                          <span class="decrement target">-</span>
+                          <input class="quantity" name="quantity" value='0' />
+                          <span class="increment target">+</span>
+                      </div>
+                      <input type="hidden" name="id" value="{{shirts[i]["id"]}}" />
+                      {% if not session %}
+                      <input type="hidden" name="loggedin" value="0" />
+                      {% else %}
+                      <input type="hidden" name="loggedin" value="1" />
+
+                      {% endif %}
+                      <input type="submit" class="btn btn-primary addToCart" value="Add To Cart" /><br /><br />
+                      <div class="alert alert-danger flashMessage" style="text-align: center; display:none; font-size:0.9em;"></div>
+                    </form>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+      </div>
+    </div>
+  </main>
+
+{% endblock %}
