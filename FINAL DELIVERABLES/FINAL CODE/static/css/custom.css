@@ -1,11 +1,11 @@
 .card:hover {
-    border-color: #999;
-    box-shadow: 1px 2px #999;
+    border-color:red;
+    box-shadow: 1px 2px red;
 }
 
 .card {
     margin-bottom: 1em;
-    background-color: palegoldenrod;
+    background-color: pink;
 }
 
 .price {
@@ -54,8 +54,8 @@ header {
 }
 
 .add:hover {
-    background-color: deepskyblue;
-    border-color: deepskyblue;
+    background-color: sandybrown;
+    border-color: sandybrown;
 }
 
 tr {
@@ -123,5 +123,5 @@ body {
 }
 
 .bg-dark {
-    background-color: saddlebrown!important;
+    background-color: grey!important;
 }
