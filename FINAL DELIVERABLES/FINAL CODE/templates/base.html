@@ -102,16 +102,16 @@
   <header>
     <nav class="navbar fixed-top navbar-dark bg-dark navbar-expand-sm box-shadow">
       <a href="/" class="navbar-brand d-flex align-items-center">
-          <strong><i class="fa  fa-cart-plus"></i> Sample Clothing Store</strong>
+          <strong><i class="fa  fa-cart-plus"></i> Smart Fashion Recommender Application</strong>
       </a>
       {% if session %}
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a href="login.html" class="nav-link">Logout</a></li>
-        <li class="nav-item"><a href="history.html" class="nav-link">You Bought</a></li>
+        <li class="nav-item"><a href="/logout/" class="nav-link">Logout</a></li>
+        <li class="nav-item"><a href="/history/" class="nav-link">You Bought</a></li>
       {% else %}
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a href="new.html" class="nav-link">Register</a></li>
-        <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+        <li class="nav-item"><a href="/new/" class="nav-link">Register</a></li>
+        <li class="nav-item"><a href="/login/" class="nav-link">Login</a></li>
 
       {% endif %}
         <li class="nav-item dropdown">
@@ -154,11 +154,24 @@
             <div class="row">
                 <div class="col-md">
                     <hr />
-                    <p>&#169; <a href="/">Sample Clothing Store</a></p>
+                    <p>&#169; <a href="/">Smart Fashion Recommender Application</a></p>
                 </div>
             </div>
         </div>
     </footer>
+    <script>
+      window.watsonAssistantChatOptions = {
+        integrationID: "614a4315-ff80-4187-8fe4-2fd9b506b723", // The ID of this integration.
+        region: "au-syd", // The region your integration is hosted in.
+        serviceInstanceID: "9670dcf8-789f-4609-8d7a-6e25c412a9ec", // The ID of your service instance.
+        onLoad: function(instance) { instance.render(); }
+      };
+      setTimeout(function(){
+        const t=document.createElement('script');
+        t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+        document.head.appendChild(t);
+      });
+    </script>
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
